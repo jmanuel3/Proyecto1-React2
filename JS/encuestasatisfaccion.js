@@ -33,3 +33,40 @@ for (let i = 0; i < respuestas.length; i++) {
   }
 }
 document.write(`El número de clientes satisfechos es: ${satisfechos}<br>`);
+
+//3. Cuántos clientes <= 4 (considerados insatisfechos).
+let insatisfechos = 0;
+for (let i = 0; i < respuestas.length; i++) {
+  if (respuestas[i] <= 4) {
+    insatisfechos++;
+  }
+}
+document.write(`El número de clientes insatisfechos es: ${insatisfechos}<br>`);
+
+// 4. El porcentaje de clientes que están satisfechos e insatisfechos.
+const clientes = respuestas.length;
+const porSatisfechos = Math.round((satisfechos / respuestas.length) * 100);
+const porInsatisfechos = (insatisfechos / respuestas.length) * 100;
+
+document.write(`El ${porSatisfechos} % de clientes está satisfecho <br>`);
+document.write(`El ${porInsatisfechos} % de clientes está insatisfecho<br>`);
+
+// 5. La calificación más repetida (moda).
+let moda = 0;
+let maxRepeticiones = 0;
+for (let i = 0; i < respuestas.length; i++) {
+  let repeticiones = 0;
+
+  for (let damo = 0; damo < respuestas.length; damo++) {
+    if (respuestas[i] === respuestas[damo]) {
+      repeticiones++;
+    }
+  }
+
+  if (repeticiones > maxRepeticiones) {
+    maxRepeticiones = repeticiones;
+    moda = respuestas[i];
+  }
+}
+
+document.write(`La calificación más repetida es: ${moda} <br>`);
